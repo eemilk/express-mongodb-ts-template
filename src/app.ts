@@ -31,12 +31,16 @@ class App {
     }
 
     private connectToTheDatabase() {
-        const {
-            DBUSER,
-            DBPASS,
-            DBPATH,
-        } = process.env
-        mongoose.connect(`mongodb+srv://${DBUSER}:${DBPASS}${DBPATH}`)
+        try {
+            const {
+                DBUSER,
+                DBPASS,
+                DBPATH,
+            } = process.env
+            mongoose.connect(`mongodb+srv://${DBUSER}:${DBPASS}${DBPATH}`)
+        } catch (error) {
+            console.log(error)
+        }
     }
 }
 

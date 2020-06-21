@@ -44,8 +44,13 @@ var App = /** @class */ (function () {
         });
     };
     App.prototype.connectToTheDatabase = function () {
-        var _a = process.env, DBUSER = _a.DBUSER, DBPASS = _a.DBPASS, DBPATH = _a.DBPATH;
-        mongoose.connect("mongodb+srv://" + DBUSER + ":" + DBPASS + DBPATH);
+        try {
+            var _a = process.env, DBUSER = _a.DBUSER, DBPASS = _a.DBPASS, DBPATH = _a.DBPATH;
+            mongoose.connect("mongodb+srv://" + DBUSER + ":" + DBPASS + DBPATH);
+        }
+        catch (error) {
+            console.log(error);
+        }
     };
     return App;
 }());
